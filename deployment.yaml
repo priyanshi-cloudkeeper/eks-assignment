@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: getting-started-app
+spec:
+  serviceName: "getting-started-service"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: getting-started
+  template:
+    metadata:
+      labels:
+        app: getting-started
+    spec:
+      containers:
+        - name: app
+          image: priyanshityagi/getting-started-app:latest  
+          ports:
+            - containerPort: 3000
+      restartPolicy: Always
+
